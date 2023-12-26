@@ -16,11 +16,6 @@ class StudentlistController extends Controller
             ->join('users', 'results.user_id', 'users.id')
             ->where('results.user_id', $user_id)
             ->get();
-        //     $users = User::query()
-        //     ->when($search, function ($query) use ($search) {
-        //         return $query->where('email', 'like', '%' . $search . '%')
-        //     ->get();
-        // });
 
         return view('studentdetail')->with('results', $userResults);
     }

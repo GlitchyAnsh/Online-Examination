@@ -30,20 +30,10 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
-//     public function changeLanguage($lang)
-// {
-//     Session::put('locale', $lang);
-//     App::setLocale($lang);
-//     Config::set('app.locale', $lang);
-//     dd(Session::get('locale'));
-//     return redirect()->back()->with(['locale' => $lang]);
-// }
 public function changeLanguage($lang)
 {
-    // Set the language in the session
     Session::put('locale', $lang);
     App::setLocale($lang);
-    // Optionally, you can set the app locale using App::setLocale($lang);
 
     return redirect()->back();
 }
@@ -105,11 +95,9 @@ public function forgetPassword(Request $request)
 public function resetPasswordLoad(Request $request)
 {
     $resetData = PasswordReset::where('token', $request->token)->first();
-    // dump($resetData->toArray());
 
     if ($resetData) {
         $user = User::where('email', $resetData->email)->first();
-        // dd($user->toArray());
 
         if ($user) {
             return view('resetPassword', compact('user'));
@@ -121,7 +109,6 @@ public function resetPasswordLoad(Request $request)
 
 public function resetPassword(Request $request)
 {
-    // dd($request->all());
     $request->validate([
         'id' => 'required',
         'password' => 'required|string|min:6|confirmed'
@@ -130,16 +117,16 @@ public function resetPassword(Request $request)
     $user = User::find($request->id);
 
     if ($user) {
-        // Update password for the correct user
+
         $user->password = Hash::make($request->password);
         $user->save();
-
-        // Delete the password reset entry for this user's email
         PasswordReset::where('email', $user->email)->delete();
 
-        return "<h2>trans('lang.Your password has been reset successfully_').</h2>";
+        return "<h2>" . trans('lang.Your password has been reset successfully_') . "</h2>";
+
     } else {
-        return "<h2>trans('lang.User not found_').</h2>";
+        return "<h2>" . trans('lang.User not found_') . "</h2>";
+
     }
 }
 }

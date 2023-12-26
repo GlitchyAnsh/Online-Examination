@@ -5,8 +5,6 @@ return[
     'email_'=>'Email',
     'password_'=>'Password',
     'Forgot_Password'=>'Forgot Password',
-
-    // 'Forget Password'
     'Login_'=>'Login',
     'Please check your mail to reset your password_'=>'Please check your mail to reset your password!',
     'Email is not exists_'=>'Email is not exists!',

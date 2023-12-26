@@ -12,16 +12,6 @@ use Illuminate\Http\Request;
 
 class QuizController extends Controller
 {
-    // public function index(){
-    // $loggedInUser = \Auth::user();
-
-    //     if ($loggedInUser->role==='teacher' || $loggedInUser->role==='admin'){
-    //         // dd(Quiz::all());
-    //         return view('quiz-list')->with('quiz_list',Quiz::paginate(7));
-    //     }
-    //     return view('student.quiz-list')->with('quiz_list',Quiz::join('questions','quizzes.id','=','questions.quiz_id')->distinct('quizzes.id')
-    //         ->select('quizzes.id as quiz_id','quizzes.*')->paginate(7));
-    // }
     public function index()
 {
     $loggedInUser = \Auth::user();
@@ -88,12 +78,12 @@ class QuizController extends Controller
                 $quiz = Quiz::find($id);
                 $user_id = session('user_id', null);
                 if (ExamCandidate::where('quiz_id',$id)->where('user_id', $user_id)->exists()){
-                    // dd(1);
+
                     return redirect()->back()->with('error','You already participated this quiz');
                 }
 
                 if (now()>=Carbon::parse(Quiz::where('id',$id)->value('to_time'))){
-                    // dd(2);
+
                     return redirect()->back()->with('error','Quiz is no longer available');
                 }
                 ExamCandidate::create([

@@ -46,23 +46,6 @@
               <label for="email">Email</label>
               <input type="email" class="form-control" name="email" value="{{ $user->email }}"/>
           </div>
-        {{-- <div class="form-group">
-            <label for="password">Password</label>
-            <div class="input-group">
-                <input type="password" class="form-control" id="password" name="password" value="{{ $user->password }}" aria-describedby="password-toggle">
-            </div> --}}
-            {{-- <div class="form-group">
-                <label for="password">Password</label>
-                <div class="input-group">
-                    <input type="password" class="form-control" id="password" name="password" value="{{$user->password}}" />
-                    <div class="input-group-append">
-                        <span class="input-group-text" onclick="togglePasswordVisibility()">
-                            <i id="eyeIcon" class="fas fa-eye"></i>
-                        </span>
-                    </div>
-                </div>
-            </div> --}}
-
             <div class="radio-group">
                 <label for="Role">Role</label><br>
                 <label>
@@ -89,41 +72,6 @@
 </section>
 </div>
 @endsection
-{{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-    $(document).ready(function() {
-        $("#password-toggle").on('click', function() {
-            var passwordField = $("#password");
-            var fieldType = passwordField.attr('type');
 
-            if (fieldType === 'password') {
-                passwordField.attr('type', 'text');
-                $(this).text('Hide');
-            } else {
-                passwordField.attr('type', 'password');
-                $(this).text('Show');
-            }
-        });
-    });
-
-    <script src="https://kit.fontawesome.com/your-font-awesome-kit.js" crossorigin="anonymous"></script>
-<script>
-    function togglePasswordVisibility() {
-        var passwordField = document.getElementById('password');
-        var eyeIcon = document.getElementById('eyeIcon');
-
-        if (passwordField.type === 'password') {
-            passwordField.type = 'text';
-            eyeIcon.classList.remove('fa-eye');
-            eyeIcon.classList.add('fa-eye-slash');
-        } else {
-            passwordField.type = 'password';
-            eyeIcon.classList.remove('fa-eye-slash');
-            eyeIcon.classList.add('fa-eye');
-        }
-    }
-</script>
-
-</script> --}}
 
 

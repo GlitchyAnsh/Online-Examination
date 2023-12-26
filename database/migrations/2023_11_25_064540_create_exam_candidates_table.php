@@ -15,8 +15,6 @@ return new class extends Migration
     {
         Schema::create('exam_candidates', function (Blueprint $table) {
             $table->id();
-            // $table->user_id();
-
             $table->foreignId('user_id')->constrained();
             $table->foreignId('quiz_id')->constrained();
             $table->timestamps();
