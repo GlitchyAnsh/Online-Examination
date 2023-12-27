@@ -7,7 +7,6 @@ use App\Notifications\WelcomeNotification;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Http\Controllers\Session;
-// use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -85,7 +84,6 @@ class UserController extends Controller
             'name' => 'required|max:255',
             'email' => 'required|max:255',
             'role' => 'required|max:255',
-            // 'password' => 'required|max:255',
         ]);
 
         // Hash the password
@@ -107,4 +105,6 @@ class UserController extends Controller
         $user->delete();
         return redirect('admin/users')->with('completed', 'User has been deleted');
     }
+
+
 }

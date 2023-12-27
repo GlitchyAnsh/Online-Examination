@@ -33,7 +33,6 @@ class SendForgetPasswordEmail implements ShouldQueue
         $user = User::where('email', $this->email)->first();
 
         if ($user) {
-            // dd(env('APP_URL'));
             $token = Str::random(40);
             $domain = URL::to('/');
             $url =  'http://localhost:8000/reset-password?token=' . $token;

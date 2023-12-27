@@ -18,7 +18,6 @@ class WelcomeNotification extends Notification implements ShouldQueue
      */
     public function __construct($details)
     {
-        // dump($details);
         $this->details=$details;
     }
 
@@ -35,21 +34,8 @@ class WelcomeNotification extends Notification implements ShouldQueue
     /**
      * Get the mail representation of the notification.
      */
-    // public function toMail($notifiable)
-    // {
-    //     $resetLink = url('/login');
-    //     return (new MailMessage)
-    //         ->greeting($this->details['greeting'])
-    //         ->line($this->details['body'])
-    //         ->line('Your registered email: ' . $notifiable->email)
-    //         ->line('Your Password:' . $notifiable->password)
-    //         ->line('For Login, click the button below:')
-    //         ->action('Login', $resetLink);
-    // }
     public function toMail($notifiable)
     {
-        // dd('jjj');
-        // dd($this->details);
         $resetLink = url('/login');
 
         return (new MailMessage)
